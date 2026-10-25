@@ -1,0 +1,769 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f3ed">
+  <meta name="description" content="Propuesta de diseño web para ÈLIT ESTÈTIC en Manresa. Descubre tratamientos de belleza y consulta para pedir cita.">
+  <title>ÈLIT ESTÈTIC | Belleza y bienestar</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #f8f3ed;
+      --white: #fffdf9;
+      --pink: #ead8d1;
+      --gold: #a98258;
+      --dark: #392f2a;
+      --muted: #766b64;
+      --line: #e8ded5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--dark);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.7;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    .announcement {
+      text-align: center;
+      background: var(--dark);
+      color: white;
+      font-size: 11px;
+      letter-spacing: 2px;
+      padding: 9px 12px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(248, 243, 237, .96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    nav {
+      min-height: 82px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-family: "Playfair Display", serif;
+      font-size: 27px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 23px;
+      font-size: 13px;
+    }
+
+    .navlinks a:not(.btn):hover {
+      color: var(--gold);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 22px;
+      min-height: 48px;
+      background: var(--dark);
+      color: white;
+      border: 1px solid var(--dark);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .btn:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: white;
+    }
+
+    .btn-light {
+      background: transparent;
+      color: var(--dark);
+      border-color: #cbb9a9;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    h1, h2, h3 {
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(44px, 7vw, 76px);
+      margin-bottom: 23px;
+    }
+
+    h2 {
+      font-size: clamp(33px, 5vw, 48px);
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      font-size: 24px;
+    }
+
+    .gold {
+      color: var(--gold);
+    }
+
+    .hero {
+      min-height: 630px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(248,243,237,.97) 0%, rgba(248,243,237,.88) 42%, rgba(248,243,237,.08) 100%),
+        url("https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=1800&q=85")
+        center/cover no-repeat;
+    }
+
+    .hero-content {
+      max-width: 650px;
+      padding: 90px 0;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 480px;
+      margin-bottom: 30px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-head {
+      max-width: 650px;
+      text-align: center;
+      margin: 0 auto 44px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 55px;
+    }
+
+    .about-photo {
+      height: 490px;
+      object-position: center;
+    }
+
+    .about-copy p {
+      color: var(--muted);
+      margin-bottom: 17px;
+    }
+
+    .about-note {
+      border-left: 2px solid var(--gold);
+      padding: 12px 0 12px 18px;
+      margin: 24px 0;
+      font-family: "Playfair Display", serif;
+      font-size: 20px;
+    }
+
+    .services {
+      background: var(--white);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      background: var(--cream);
+      border: 1px solid var(--line);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 35px #392f2a12;
+    }
+
+    .service-card img {
+      height: 235px;
+    }
+
+    .service-content {
+      padding: 25px;
+    }
+
+    .service-content h3 {
+      margin-bottom: 12px;
+    }
+
+    .service-content p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .service-link {
+      display: inline-block;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 4px;
+    }
+
+    .banner {
+      text-align: center;
+      background: var(--pink);
+    }
+
+    .banner p {
+      max-width: 600px;
+      color: var(--muted);
+      margin: 0 auto 27px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .gallery-grid img {
+      height: 320px;
+    }
+
+    .contact {
+      background: var(--white);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 35px;
+    }
+
+    .contact-info {
+      padding: 32px;
+      background: var(--cream);
+      border: 1px solid var(--line);
+    }
+
+    .contact-item {
+      margin: 24px 0;
+    }
+
+    .contact-item strong {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      color: var(--gold);
+    }
+
+    .contact-item p {
+      color: var(--muted);
+    }
+
+    .map {
+      width: 100%;
+      min-height: 410px;
+      height: 100%;
+      border: 0;
+      background: #eee5dd;
+    }
+
+    .booking-box {
+      margin-top: 22px;
+      padding: 22px;
+      background: var(--pink);
+    }
+
+    .booking-box p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+
+    footer {
+      padding: 35px 0;
+      background: var(--dark);
+      color: white;
+      text-align: center;
+    }
+
+    footer .logo {
+      margin-bottom: 10px;
+    }
+
+    footer p {
+      color: #d6c9c0;
+      font-size: 12px;
+    }
+
+    .demo-note {
+      margin: 18px auto 0;
+      max-width: 760px;
+      font-size: 11px;
+      color: #b8aaa0;
+    }
+
+    .floating-booking {
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      z-index: 15;
+      box-shadow: 0 5px 20px #0002;
+    }
+
+    @media (max-width: 800px) {
+      .navlinks {
+        gap: 13px;
+      }
+
+      .navlinks .btn {
+        padding: 10px 12px;
+      }
+
+      .about-grid, .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-photo {
+        height: 350px;
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-grid img {
+        height: 240px;
+      }
+
+      .map {
+        min-height: 330px;
+      }
+    }
+
+    @media (max-width: 540px) {
+      nav {
+        min-height: 70px;
+        flex-wrap: wrap;
+        padding: 12px 0;
+      }
+
+      .logo {
+        font-size: 23px;
+      }
+
+      .navlinks {
+        width: 100%;
+        justify-content: space-between;
+        gap: 10px;
+        font-size: 12px;
+        flex-wrap: wrap;
+      }
+
+      .navlinks .nav-cta {
+        display: none;
+      }
+
+      .hero {
+        min-height: 550px;
+        background-position: 58% center;
+      }
+
+      .hero-content {
+        padding: 65px 0;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card img {
+        height: 260px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .gallery-grid img {
+        height: 190px;
+      }
+
+      .contact-info {
+        padding: 22px;
+      }
+
+      .floating-booking {
+        right: 10px;
+        bottom: 10px;
+        padding: 11px 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="announcement">
+    BELLEZA · CUIDADO PERSONAL · BIENESTAR
+  </div>
+
+  <header>
+    <nav class="container">
+      <a class="logo" href="#inicio">ÈLIT <span>ESTÈTIC</span></a>
+
+      <div class="navlinks">
+        <a href="#nosotros">Nosotros</a>
+        <a href="#tratamientos">Tratamientos</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto">Contacto</a>
+        <a class="btn nav-cta" href="#citas">PEDIR CITA</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">Un momento para ti</div>
+          <h1>Tu belleza,<br><span class="gold">tu esencia.</span></h1>
+          <p>
+            Descubre un espacio pensado para cuidarte, relajarte
+            y dedicarte el tiempo que mereces.
+          </p>
+          <div class="actions">
+            <a class="btn" href="#citas">CONSULTAR UNA CITA ↗</a>
+            <a class="btn btn-light" href="#tratamientos">DESCUBRIR MÁS</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nosotros">
+      <div class="container about-grid">
+        <img
+          class="about-photo"
+          src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=85"
+          alt="Espacio de bienestar y relajación, fotografía de ejemplo"
+          loading="lazy"
+        >
+
+        <div class="about-copy">
+          <div class="eyebrow">Cuidado personal</div>
+          <h2>Un espacio para <span class="gold">sentirte bien.</span></h2>
+          <p>
+            Cada persona tiene sus propias necesidades. Una experiencia
+            de belleza debe empezar escuchándote y ayudándote a encontrar
+            el tratamiento que mejor encaje contigo.
+          </p>
+          <p>
+            Esta propuesta de web está diseñada para presentar los
+            servicios de un centro de estética de forma clara,
+            elegante y fácil de utilizar desde el móvil.
+          </p>
+          <div class="about-note">
+            Regálate un momento para ti.
+          </div>
+          <a class="btn" href="#contacto">CONSULTAR INFORMACIÓN</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="tratamientos">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Descubre las opciones</div>
+          <h2>Tratamientos y <span class="gold">cuidados</span></h2>
+          <p>
+            Estas categorías son ejemplos para la demostración.
+            Los tratamientos reales deben confirmarse con el centro.
+          </p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card">
+            <img
+              src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=800&q=85"
+              alt="Productos de cuidado facial, imagen de ejemplo"
+              loading="lazy"
+            >
+            <div class="service-content">
+              <h3>Cuidado facial</h3>
+              <p>
+                Una sección para presentar los tratamientos faciales
+                disponibles y explicar en qué consisten.
+              </p>
+              <a class="service-link" href="#citas">CONSULTAR INFORMACIÓN ↗</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <img
+              src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=85"
+              alt="Tratamiento estético, imagen de ejemplo"
+              loading="lazy"
+            >
+            <div class="service-content">
+              <h3>Tratamientos de belleza</h3>
+              <p>
+                Espacio para mostrar tratamientos, detalles del servicio
+                y las recomendaciones del centro.
+              </p>
+              <a class="service-link" href="#citas">CONSULTAR INFORMACIÓN ↗</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <img
+              src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=85"
+              alt="Ambiente de bienestar y relajación, imagen de ejemplo"
+              loading="lazy"
+            >
+            <div class="service-content">
+              <h3>Bienestar y relajación</h3>
+              <p>
+                Una presentación de las opciones de bienestar que
+                el establecimiento confirme que ofrece.
+              </p>
+              <a class="service-link" href="#citas">CONSULTAR INFORMACIÓN ↗</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="banner" id="citas">
+      <div class="container">
+        <div class="eyebrow">Estamos aquí para ayudarte</div>
+        <h2>Tu próximo momento <span class="gold">empieza aquí.</span></h2>
+        <p>
+          ¿Quieres consultar un tratamiento, conocer los precios
+          o preguntar por la disponibilidad? Puedes preparar una
+          consulta por WhatsApp o buscar el centro en Google Maps.
+        </p>
+        <div class="actions" style="justify-content:center">
+          <a
+            class="btn"
+            href="https://wa.me/?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20informaci%C3%B3n%20sobre%20los%20tratamientos%20y%20las%20citas%20de%20%C3%88LIT%20EST%C3%88TIC."
+            target="_blank"
+            rel="noopener noreferrer"
+          >CONSULTAR POR WHATSAPP ↗</a>
+          <a
+            class="btn btn-light"
+            href="https://www.google.com/maps/search/?api=1&query=ÈLIT+ESTÈTIC+Manresa"
+            target="_blank"
+            rel="noopener noreferrer"
+          >VER EN MAPS ↗</a>
+        </div>
+        <p style="font-size:12px;margin-top:18px">
+          El enlace de WhatsApp prepara el mensaje, pero tendrás que
+          elegir el contacto. No confirma ni registra una cita.
+        </p>
+      </div>
+    </section>
+
+    <section id="galeria">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Un ambiente especial</div>
+          <h2>Inspiración y <span class="gold">detalles</span></h2>
+          <p>
+            Fotografías genéricas de ejemplo. La galería definitiva
+            debe utilizar imágenes autorizadas del negocio.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <img
+            src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=700&q=85"
+            alt="Inspiración de bienestar 1"
+            loading="lazy"
+          >
+          <img
+            src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=700&q=85"
+            alt="Inspiración de bienestar 2"
+            loading="lazy"
+          >
+          <img
+            src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=700&q=85"
+            alt="Inspiración de belleza 3"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contacto">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Estamos en Manresa</div>
+          <h2>Contacto y <span class="gold">ubicación</span></h2>
+          <p>
+            Encuentra el centro en el mapa y consulta cómo llegar.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>ÈLIT ESTÈTIC</h3>
+
+            <div class="contact-item">
+              <strong>📍 UBICACIÓN</strong>
+              <p>Manresa, Barcelona</p>
+              <p style="font-size:12px">
+                Comprueba la dirección exacta en el mapa antes de desplazarte.
+              </p>
+            </div>
+
+            <div class="contact-item">
+              <strong>💬 CONSULTAS</strong>
+              <p>Pregunta por tratamientos, precios y disponibilidad.</p>
+            </div>
+
+            <div class="contact-item">
+              <strong>📅 CITAS</strong>
+              <p>Contacta con el establecimiento para conocer sus opciones de reserva.</p>
+            </div>
+
+            <div class="actions">
+              <a
+                class="btn"
+                href="https://www.google.com/maps/search/?api=1&query=ÈLIT+ESTÈTIC+Manresa"
+                target="_blank"
+                rel="noopener noreferrer"
+              >CÓMO LLEGAR ↗</a>
+
+              <a
+                class="btn btn-light"
+                href="https://wa.me/?text=Hola%2C%20quisiera%20consultar%20informaci%C3%B3n%20sobre%20ÈLIT%20ESTÈTIC%20en%20Manresa."
+                target="_blank"
+                rel="noopener noreferrer"
+              >ENVIAR CONSULTA</a>
+            </div>
+          </div>
+
+          <iframe
+            class="map"
+            title="Buscar ÈLIT ESTÈTIC en Manresa en Google Maps"
+            src="https://maps.google.com/maps?q=ÈLIT%20ESTÈTIC%2C%20Manresa&t=&z=14&ie=UTF8&iwloc=&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="logo">ÈLIT <span>ESTÈTIC</span></div>
+      <p>Belleza · Cuidado personal · Bienestar</p>
+      <p style="margin-top:12px">© <span id="year"></span> · Propuesta de diseño web</p>
+      <p class="demo-note">
+        DEMOSTRACIÓN NO OFICIAL. Este diseño no representa una web oficial
+        del establecimiento ni confirma sus servicios, precios, dirección
+        exacta o disponibilidad. Nombre e imágenes sujetos a autorización.
+      </p>
+    </div>
+  </footer>
+
+  <a class="btn floating-booking" href="#citas" aria-label="Consultar cita">
+    PEDIR CITA ↗
+  </a>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
